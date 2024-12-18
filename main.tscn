@@ -1,3 +1,7 @@
 [gd_scene format=3 uid="uid://doou1trp0mq8n"]
 
 [node name="Main" type="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
