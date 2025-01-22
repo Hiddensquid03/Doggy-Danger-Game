@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bu4rhgm7n2y1p"]
+[gd_scene load_steps=14 format=3 uid="uid://bu4rhgm7n2y1p"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_yfmle"]
 [ext_resource type="Texture2D" uid="uid://cn6yxo1aq2g64" path="res://art/untitled_0001.png" id="2_moyf6"]
@@ -6,6 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://d4ehfnakfcqb0" path="res://art/untitled_0003.png" id="4_v6hdy"]
 [ext_resource type="Texture2D" uid="uid://dc44e31kgx6pa" path="res://art/untitled_0004.png" id="5_gyy0f"]
 [ext_resource type="Texture2D" uid="uid://cadp8kfcc6s04" path="res://art/untitled_0005.png" id="6_3wrkg"]
+[ext_resource type="Texture2D" uid="uid://k01fwv7782u" path="res://art/untitled_0001Right.png" id="7_upjvg"]
+[ext_resource type="Texture2D" uid="uid://dsh5r5icurmq1" path="res://art/untitled_0002Right.png" id="8_742ox"]
+[ext_resource type="Texture2D" uid="uid://d3xebr470u0vj" path="res://art/untitled_0003Right.png" id="9_lex12"]
+[ext_resource type="Texture2D" uid="uid://cvnsy8xsiwp57" path="res://art/untitled_0004Right.png" id="10_yuf30"]
+[ext_resource type="Texture2D" uid="uid://0qwm426lel3w" path="res://art/untitled_0005Right.png" id="11_scs10"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_emob2"]
 animations = [{
@@ -36,19 +41,39 @@ animations = [{
 "loop": true,
 "name": &"Walk",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_upjvg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_742ox")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_lex12")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_yuf30")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_scs10")
+}],
+"loop": true,
+"name": &"Walk_Right",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4yloi"]
 size = Vector2(16, 29)
 
 [node name="player" type="Area2D"]
+position = Vector2(54, 32)
 script = ExtResource("1_yfmle")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-8, -14)
 sprite_frames = SubResource("SpriteFrames_emob2")
-animation = &"Idle"
-frame_progress = 0.561643
+animation = &"Walk_Right"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-19, -10.5)
