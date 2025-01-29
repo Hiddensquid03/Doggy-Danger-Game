@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bi0h861dtquhe"]
+
+[ext_resource type="Texture2D" uid="uid://37a8eimhbolr" path="res://art/Tennisball.png" id="1_1yfoj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yt046"]
+size = Vector2(34, 32.5)
+
+[node name="Area2D" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_1yfoj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -3.75)
+shape = SubResource("RectangleShape2D_yt046")

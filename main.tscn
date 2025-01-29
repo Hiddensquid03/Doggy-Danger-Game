@@ -1,7 +1,52 @@
-[gd_scene format=3 uid="uid://doou1trp0mq8n"]
+[gd_scene load_steps=7 format=3 uid="uid://doou1trp0mq8n"]
 
-[node name="Main" type="Node2D"]
+[ext_resource type="Script" path="res://main.gd" id="1_37dpv"]
+[ext_resource type="PackedScene" uid="uid://bu4rhgm7n2y1p" path="res://player.tscn" id="2_wys1f"]
+[ext_resource type="PackedScene" uid="uid://ch6o0ckg2lgpc" path="res://mob.tscn" id="2_y072y"]
+[ext_resource type="PackedScene" uid="uid://bi0h861dtquhe" path="res://Tennisball.tscn" id="3_b1cqx"]
 
-[node name="Area2D" type="Area2D" parent="."]
+[sub_resource type="QuadMesh" id="QuadMesh_cd6ou"]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
+[sub_resource type="Curve2D" id="Curve2D_l0h74"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 4, -1, 0, 0, 0, 0, 476, -3, 0, 0, 0, 0, 479, 715, 0, 0, 0, 0, 0, 713, 0, 0, 0, 0, 4, -1)
+}
+point_count = 5
+
+[node name="Main" type="Node"]
+script = ExtResource("1_37dpv")
+mob_scene = ExtResource("2_y072y")
+Tennis_ballscene = ExtResource("3_b1cqx")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+modulate = Color(0.0901961, 0.494118, 0.0980392, 1)
+position = Vector2(237.5, 360.5)
+scale = Vector2(555, 809)
+mesh = SubResource("QuadMesh_cd6ou")
+
+[node name="player" parent="." instance=ExtResource("2_wys1f")]
+
+[node name="Mobtimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="Score timer" type="Timer" parent="."]
+
+[node name="Start timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[node name="Start position" type="Marker2D" parent="."]
+position = Vector2(240, 450)
+
+[node name="Mobpath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_l0h74")
+
+[node name="Mobspawnlocation" type="PathFollow2D" parent="Mobpath"]
+position = Vector2(4, -1)
+rotation = -0.00423726
+
+[connection signal="hit" from="player" to="." method="game_over"]
+[connection signal="timeout" from="Mobtimer" to="." method="_on_mobtimer_timeout"]
+[connection signal="timeout" from="Score timer" to="." method="_on_score_timer_timeout"]
+[connection signal="timeout" from="Start timer" to="." method="_on_start_timer_timeout"]

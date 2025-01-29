@@ -2,9 +2,11 @@ extends Area2D
 
 @export var speed = 400 # pixels p sec
 var screen_size
+var lives:int
 
 func _ready():
 	screen_size = get_viewport_rect().size
+	lives = 3
 	
 func _process(delta):
 	var velocity = Vector2.ZERO # The player's movement vector.
@@ -55,4 +57,16 @@ signal hit
 
 
 func _on_body_entered(body):
-	pass # Replace with function body.
+	if lives > 1:
+		lives -= 1
+	else:
+		hide() # Player disappears after being hit.
+		hit.emit()
+		# Must be deferred as we can't change physics properties on a physics callback.
+		$CollisionShape2D.set_deferred("disabled", true)
+	
+func start(pos):
+	position = pos
+	show()
+	$CollisionShape2D.disabled = false
+	
