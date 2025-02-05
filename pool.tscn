@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://ditw1c6xvv88r"]
+
+[ext_resource type="Texture2D" uid="uid://cfdbhr13xxq50" path="res://art/poool.png" id="1_7h4l4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nca44"]
+size = Vector2(26, 36)
+
+[node name="RigidBody2D" type="RigidBody2D"]
+texture_filter = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_7h4l4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D"]
+position = Vector2(1, -3)
+shape = SubResource("RectangleShape2D_nca44")

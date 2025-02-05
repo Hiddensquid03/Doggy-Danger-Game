@@ -57,13 +57,21 @@ signal hit
 
 
 func _on_body_entered(body):
-	if lives > 1:
-		lives -= 1
-	else:
-		hide() # Player disappears after being hit.
-		hit.emit()
-		# Must be deferred as we can't change physics properties on a physics callback.
-		$CollisionShape2D.set_deferred("disabled", true)
+	#Lawnmower
+	if body.get_collision_layer_value(1):
+		print("Hit lawnmower")
+		if lives > 1:
+			lives -= 1
+		else:
+			hide() # Player disappears after being hit.
+			hit.emit()
+			# Must be deferred as we can't change physics properties on a physics callback.
+			$CollisionShape2D.set_deferred("disabled", true)
+	#Tennis ball
+	elif body.get_collision_layer_value(2):
+		print("Tennis ball hit")
+		#UPDATE SCORE ETC.
+		body.queue_free()#uninstantiate tennis ball
 	
 func start(pos):
 	position = pos

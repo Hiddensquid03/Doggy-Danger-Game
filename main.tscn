@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://doou1trp0mq8n"]
+[gd_scene load_steps=8 format=3 uid="uid://doou1trp0mq8n"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_37dpv"]
 [ext_resource type="PackedScene" uid="uid://bu4rhgm7n2y1p" path="res://player.tscn" id="2_wys1f"]
 [ext_resource type="PackedScene" uid="uid://ch6o0ckg2lgpc" path="res://mob.tscn" id="2_y072y"]
 [ext_resource type="PackedScene" uid="uid://bi0h861dtquhe" path="res://Tennisball.tscn" id="3_b1cqx"]
+[ext_resource type="PackedScene" uid="uid://ditw1c6xvv88r" path="res://pool.tscn" id="5_om43f"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_cd6ou"]
 
@@ -25,6 +26,10 @@ scale = Vector2(555, 809)
 mesh = SubResource("QuadMesh_cd6ou")
 
 [node name="player" parent="." instance=ExtResource("2_wys1f")]
+
+[node name="RigidBody2D" parent="player" instance=ExtResource("5_om43f")]
+position = Vector2(303, 112)
+scale = Vector2(5, 5)
 
 [node name="Mobtimer" type="Timer" parent="."]
 wait_time = 0.5

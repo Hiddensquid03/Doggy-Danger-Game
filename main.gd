@@ -27,7 +27,8 @@ func new_game():
 		var Tennisball = Tennis_ballscene.instantiate()
 		Tennisball.position = Vector2(randf_range(35,470),randf_range(33, 720))
 		add_child(Tennisball)
-		
+	
+
 
 func _on_mobtimer_timeout():
 	# Create a new instance of the Mob scene.
