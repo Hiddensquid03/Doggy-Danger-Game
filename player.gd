@@ -76,7 +76,10 @@ func _on_body_entered(body):
 	elif body.get_collision_layer_value(3):
 		print("pool hit")
 		speed = 200
-	
+	#elif body.get_collision_layer_value(3):
+	#	body_exited()
+	#	print("left pool")
+	#	speed = 400
 		
 	
 	
