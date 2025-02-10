@@ -1,6 +1,7 @@
 extends Node
 @export var mob_scene: PackedScene
 @export var Tennis_ballscene: PackedScene
+@export var Pool_scene: PackedScene
 var score
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -19,6 +20,7 @@ func new_game():
 	score = 0
 	if $player != null:
 		$player.start($"Start position".position)
+		$player.z_index = 10
 	else:
 		print("Failed to find player in scene")
 	$"Start timer".start()
@@ -27,9 +29,18 @@ func new_game():
 		var Tennisball = Tennis_ballscene.instantiate()
 		Tennisball.position = Vector2(randf_range(35,470),randf_range(33, 720))
 		add_child(Tennisball)
+		Tennisball.z_index = 10
+		
+	# get rand pos
+	var poolNumber = randi_range(1,8);
+	var poolPosition = get_node("PoolSpawner" + str(poolNumber)).global_position;
 	
-
-
+	# set to pos
+	var pool = Pool_scene.instantiate()
+	pool.position = poolPosition
+	add_child(pool)
+	pool.z_index = 1
+	
 func _on_mobtimer_timeout():
 	# Create a new instance of the Mob scene.
 	var mob = mob_scene.instantiate()
@@ -37,6 +48,7 @@ func _on_mobtimer_timeout():
 	# Choose a random location on Path2D.
 	var mob_spawn_location = $Mobpath/Mobspawnlocation
 	mob_spawn_location.progress_ratio = randf()
+	mob.z_index= 10
 
 	# Set the mob's direction perpendicular to the path direction.
 	var direction = mob_spawn_location.rotation + PI / 2
@@ -64,5 +76,7 @@ func _on_score_timer_timeout():
 func _on_start_timer_timeout():
 	$Mobtimer.start()
 	$"Score timer".start()
+
+
 	
 	

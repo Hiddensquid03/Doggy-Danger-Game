@@ -1,16 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://ditw1c6xvv88r"]
+[gd_scene load_steps=4 format=3 uid="uid://ditw1c6xvv88r"]
 
 [ext_resource type="Texture2D" uid="uid://cfdbhr13xxq50" path="res://art/poool.png" id="1_7h4l4"]
+[ext_resource type="Script" path="res://pool.gd" id="1_vnpnf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nca44"]
 size = Vector2(26, 36)
 
-[node name="RigidBody2D" type="RigidBody2D"]
+[node name="Pool" type="RigidBody2D"]
 texture_filter = 1
+collision_layer = 4
+collision_mask = 4
+gravity_scale = 0.0
+script = ExtResource("1_vnpnf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(5, 5)
 texture = ExtResource("1_7h4l4")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D"]
-position = Vector2(1, -3)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(5, -15)
+scale = Vector2(5, 5)
 shape = SubResource("RectangleShape2D_nca44")

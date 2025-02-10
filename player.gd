@@ -72,6 +72,13 @@ func _on_body_entered(body):
 		print("Tennis ball hit")
 		#UPDATE SCORE ETC.
 		body.queue_free()#uninstantiate tennis ball
+		
+	elif body.get_collision_layer_value(3):
+		print("pool hit")
+		speed = 200
+	
+		
+	
 	
 func start(pos):
 	position = pos

@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://doou1trp0mq8n"]
+[gd_scene load_steps=7 format=3 uid="uid://doou1trp0mq8n"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_37dpv"]
 [ext_resource type="PackedScene" uid="uid://bu4rhgm7n2y1p" path="res://player.tscn" id="2_wys1f"]
 [ext_resource type="PackedScene" uid="uid://ch6o0ckg2lgpc" path="res://mob.tscn" id="2_y072y"]
 [ext_resource type="PackedScene" uid="uid://bi0h861dtquhe" path="res://Tennisball.tscn" id="3_b1cqx"]
-[ext_resource type="PackedScene" uid="uid://ditw1c6xvv88r" path="res://pool.tscn" id="5_2eiqy"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_cd6ou"]
 
@@ -18,7 +17,6 @@ point_count = 5
 script = ExtResource("1_37dpv")
 mob_scene = ExtResource("2_y072y")
 Tennis_ballscene = ExtResource("3_b1cqx")
-Pool_scene = ExtResource("5_2eiqy")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
 modulate = Color(0.0901961, 0.494118, 0.0980392, 1)
@@ -49,25 +47,25 @@ position = Vector2(4, -1)
 rotation = -0.00423726
 
 [node name="PoolSpawner2" type="Marker2D" parent="."]
-position = Vector2(261, 127)
+position = Vector2(273, 104)
 
 [node name="PoolSpawner1" type="Marker2D" parent="."]
-position = Vector2(100, 129)
+position = Vector2(85, 108)
 
 [node name="PoolSpawner5" type="Marker2D" parent="."]
-position = Vector2(104, 322)
+position = Vector2(93, 323)
 
 [node name="PoolSpawner3" type="Marker2D" parent="."]
-position = Vector2(393, 122)
+position = Vector2(426, 92)
 
 [node name="PoolSpawner6" type="Marker2D" parent="."]
-position = Vector2(105, 569)
+position = Vector2(74, 562)
 
 [node name="PoolSpawner4" type="Marker2D" parent="."]
-position = Vector2(402, 318)
+position = Vector2(416, 312)
 
 [node name="PoolSpawner7" type="Marker2D" parent="."]
-position = Vector2(257, 567)
+position = Vector2(219, 585)
 
 [node name="PoolSpawner8" type="Marker2D" parent="."]
 position = Vector2(397, 558)
