@@ -5,16 +5,22 @@ extends Node
 var score
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	new_game()
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame. 35 33 470 720
-func _process(delta):
+	#new_game()
 	pass
+	
+
+func increment_score():
+	score += 1
+	print(score)
+	$Hud.update_score(score)
+
+func decrease_lives():
+	$Hud.update_Lifes($player.get_lives())
 
 func game_over():
-	$"Score timer".stop()
+	#$"Score timer".stop()
 	$Mobtimer.stop()
+	$Hud.show_game_over()
 
 func new_game():
 	score = 0
@@ -23,9 +29,9 @@ func new_game():
 		$player.z_index = 10
 	else:
 		print("Failed to find player in scene")
-	$"Start timer".start()
+	#$"Start timer".start()
 	
-	for i in 15:
+	for i in 20:
 		var Tennisball = Tennis_ballscene.instantiate()
 		Tennisball.position = Vector2(randf_range(35,470),randf_range(33, 720))
 		add_child(Tennisball)
@@ -40,6 +46,9 @@ func new_game():
 	pool.position = poolPosition
 	add_child(pool)
 	pool.z_index = 1
+	
+	$Hud.update_score(score)
+	#$Hud.show_message("Get Ready")
 	
 func _on_mobtimer_timeout():
 	# Create a new instance of the Mob scene.
@@ -68,15 +77,18 @@ func _on_mobtimer_timeout():
 	add_child(mob)
 
 
+
 func _on_score_timer_timeout():
-	score += 1
+	pass
 
-
-
-func _on_start_timer_timeout():
+#func _on_start_timer_timeout():
+func start_timers():
+	new_game()
+	$Hud.update_score(score)
 	$Mobtimer.start()
 	$"Score timer".start()
 
-
+func player():
+	pass
 	
 	

@@ -1,12 +1,14 @@
 extends Area2D
 
 @export var speed = 400 # pixels p sec
+#@export var main: PackedScene
 var screen_size
 var lives:int
-
+var main
 func _ready():
 	screen_size = get_viewport_rect().size
 	lives = 3
+	main = get_parent()
 	
 func _process(delta):
 	var velocity = Vector2.ZERO # The player's movement vector.
@@ -54,7 +56,8 @@ func _process(delta):
 		
 signal hit
 
-
+func get_lives():
+	return lives
 
 func _on_body_entered(body):
 	#Lawnmower
@@ -62,6 +65,8 @@ func _on_body_entered(body):
 		print("Hit lawnmower")
 		if lives > 1:
 			lives -= 1
+			main.decrease_lives()
+			
 		else:
 			hide() # Player disappears after being hit.
 			hit.emit()
@@ -70,7 +75,7 @@ func _on_body_entered(body):
 	#Tennis ball
 	elif body.get_collision_layer_value(2):
 		print("Tennis ball hit")
-		#UPDATE SCORE ETC.
+		main.increment_score()
 		body.queue_free()#uninstantiate tennis ball
 		
 	elif body.get_collision_layer_value(3):

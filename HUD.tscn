@@ -1,17 +1,54 @@
-[gd_scene format=3 uid="uid://bcapwwehjcu8p"]
+[gd_scene load_steps=2 format=3 uid="uid://bcapwwehjcu8p"]
+
+[ext_resource type="Script" path="res://HUD.gd" id="1_o6ma0"]
 
 [node name="Hud" type="CanvasLayer"]
+script = ExtResource("1_o6ma0")
 
 [node name="ScoreLabel" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 27.0
+offset_top = 19.0
+offset_right = 185.0
+offset_bottom = 110.0
+size_flags_horizontal = 0
+size_flags_vertical = 2
+theme_override_font_sizes/font_size = 64
+text = "0"
+metadata/_edit_use_anchors_ = true
 
-[node name="Message" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="PlayingTime" type="Timer" parent="ScoreLabel"]
+wait_time = 30.0
 
 [node name="StartButton" type="Button" parent="."]
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = 157.0
+offset_top = 371.0
+offset_right = 353.0
+offset_bottom = 424.0
+text = "Start"
 
 [node name="MessageTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="Message" type="Label" parent="."]
+offset_left = 141.0
+offset_top = 118.0
+offset_right = 367.0
+offset_bottom = 300.0
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 64
+text = "Doggy 
+Danger"
+autowrap_mode = 2
+
+[node name="lives" type="Label" parent="."]
+offset_left = 398.0
+offset_top = 16.0
+offset_right = 479.0
+offset_bottom = 107.0
+theme_override_font_sizes/font_size = 64
+text = "3"
+
+[connection signal="start_game" from="." to="." method="_on_start_game"]
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="timeout" from="MessageTimer" to="." method="_on_message_timer_timeout"]

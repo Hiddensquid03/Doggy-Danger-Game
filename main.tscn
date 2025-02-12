@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://doou1trp0mq8n"]
+[gd_scene load_steps=9 format=3 uid="uid://doou1trp0mq8n"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_37dpv"]
 [ext_resource type="PackedScene" uid="uid://bu4rhgm7n2y1p" path="res://player.tscn" id="2_wys1f"]
 [ext_resource type="PackedScene" uid="uid://ch6o0ckg2lgpc" path="res://mob.tscn" id="2_y072y"]
 [ext_resource type="PackedScene" uid="uid://bi0h861dtquhe" path="res://Tennisball.tscn" id="3_b1cqx"]
 [ext_resource type="PackedScene" uid="uid://ditw1c6xvv88r" path="res://pool.tscn" id="5_2eiqy"]
+[ext_resource type="PackedScene" uid="uid://bcapwwehjcu8p" path="res://HUD.tscn" id="6_pb3x3"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_cd6ou"]
 
@@ -71,6 +72,8 @@ position = Vector2(257, 567)
 
 [node name="PoolSpawner8" type="Marker2D" parent="."]
 position = Vector2(397, 558)
+
+[node name="Hud" parent="." instance=ExtResource("6_pb3x3")]
 
 [connection signal="hit" from="player" to="." method="game_over"]
 [connection signal="timeout" from="Mobtimer" to="." method="_on_mobtimer_timeout"]
