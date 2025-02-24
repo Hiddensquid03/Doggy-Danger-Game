@@ -1,5 +1,8 @@
 extends RigidBody2D
-
+# EMPTY NOT REQUIRED
+# EMPTY NOT REQUIRED
+# EMPTY NOT REQUIRED
+#Templating purposes
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

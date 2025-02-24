@@ -5,7 +5,7 @@ extends Node
 
 @export var Hud_scene:PackedScene
 var score
-var tennis_balls = [20, 100]
+var tennis_balls = [20, 30]
 var min_vel = [150,200]
 var max_vel = [250, 300]
 var difficulty = 0
@@ -20,7 +20,6 @@ func _ready():
 # increments score 
 func increment_score():
 	score += 1
-	print(score)
 	$Hud.update_score(score)
 #decreases lives when hit
 func decrease_lives():
@@ -28,18 +27,18 @@ func decrease_lives():
 #stops game 
 func game_over():
 	is_game_over = true
-	#$"Score timer".stop()
 	$Mobtimer.stop()
 	$Hud.show_game_over()
 
 func new_game():
+	#spawning player
 	score = 0
 	if $player != null:
 		$player.start($"Start position".position)
 		$player.z_index = 10
 	else:
 		print("Failed to find player in scene")
-	#$"Start timer".start()
+		#spawning tennisballs
 	for i in tennis_balls[difficulty]:
 		var Tennisball = Tennis_ballscene.instantiate()
 		Tennisball.position = Vector2(randf_range(35,470),randf_range(33, 720))
