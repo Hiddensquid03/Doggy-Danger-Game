@@ -2,22 +2,32 @@ extends Node
 @export var mob_scene: PackedScene
 @export var Tennis_ballscene: PackedScene
 @export var Pool_scene: PackedScene
+
+@export var Hud_scene:PackedScene
 var score
+var tennis_balls = [20, 100]
+var min_vel = [150,200]
+var max_vel = [250, 300]
+var difficulty = 0
+
+var is_game_over = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#new_game()
 	pass
 	
-
+# increments score 
 func increment_score():
 	score += 1
 	print(score)
 	$Hud.update_score(score)
-
+#decreases lives when hit
 func decrease_lives():
 	$Hud.update_Lifes($player.get_lives())
-
+#stops game 
 func game_over():
+	is_game_over = true
 	#$"Score timer".stop()
 	$Mobtimer.stop()
 	$Hud.show_game_over()
@@ -30,8 +40,7 @@ func new_game():
 	else:
 		print("Failed to find player in scene")
 	#$"Start timer".start()
-	
-	for i in 20:
+	for i in tennis_balls[difficulty]:
 		var Tennisball = Tennis_ballscene.instantiate()
 		Tennisball.position = Vector2(randf_range(35,470),randf_range(33, 720))
 		add_child(Tennisball)
@@ -70,7 +79,7 @@ func _on_mobtimer_timeout():
 	mob.rotation = direction
 
 	# Choose the velocity for the mob.
-	var velocity = Vector2(randf_range(150.0, 250.0), 0.0)
+	var velocity = Vector2(randf_range(min_vel[difficulty], max_vel[difficulty]), 0.0)
 	mob.linear_velocity = velocity.rotated(direction)
 
 	# Spawn the mob by adding it to the Main scene.
@@ -87,6 +96,7 @@ func start_timers():
 	$Hud.update_score(score)
 	$Mobtimer.start()
 	$"Score timer".start()
+	get_node("Hud/PlayingTime").start()
 
 func player():
 	pass

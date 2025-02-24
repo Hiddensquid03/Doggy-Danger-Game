@@ -11,6 +11,10 @@ func _ready():
 	main = get_parent()
 	
 func _process(delta):
+	
+	if get_parent().is_game_over == true:
+		return
+		
 	var velocity = Vector2.ZERO # The player's movement vector.
 	if Input.is_action_pressed("Move_Right1"):
 		velocity.x += 1
@@ -60,6 +64,10 @@ func get_lives():
 	return lives
 
 func _on_body_entered(body):
+	
+	if get_parent().is_game_over == true:
+		return
+	
 	#Lawnmower
 	if body.get_collision_layer_value(1):
 		print("Hit lawnmower")

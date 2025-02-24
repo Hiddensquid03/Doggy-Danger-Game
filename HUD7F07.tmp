@@ -17,11 +17,11 @@ text = "0"
 metadata/_edit_use_anchors_ = true
 
 [node name="StartButton" type="Button" parent="."]
-offset_left = 36.0
-offset_top = 333.0
-offset_right = 232.0
-offset_bottom = 394.0
-text = "Easy"
+offset_left = 157.0
+offset_top = 371.0
+offset_right = 353.0
+offset_bottom = 424.0
+text = "Start"
 
 [node name="MessageTimer" type="Timer" parent="."]
 wait_time = 2.0
@@ -56,15 +56,7 @@ text = "30"
 
 [node name="PlayingTime" type="Timer" parent="."]
 
-[node name="Hard button" type="Button" parent="."]
-offset_left = 278.0
-offset_top = 330.0
-offset_right = 450.0
-offset_bottom = 394.0
-text = "HARD"
-
 [connection signal="start_game" from="." to="." method="_on_start_game"]
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="timeout" from="MessageTimer" to="." method="_on_message_timer_timeout"]
 [connection signal="timeout" from="PlayingTime" to="." method="_on_playing_time_timeout"]
-[connection signal="pressed" from="Hard button" to="." method="_on_hard_button_pressed"]
