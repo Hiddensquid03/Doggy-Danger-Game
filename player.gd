@@ -1,6 +1,7 @@
 extends Area2D
 
 @export var speed = 400 # pixels p sec
+@export var explosion: PackedScene
 #@export var main: PackedScene
 var screen_size
 var lives:int #lives origin
@@ -82,8 +83,15 @@ func _on_body_entered(body):
 			$CollisionShape2D.set_deferred("disabled", true)
 	#Tennis ball
 	elif body.get_collision_layer_value(2):
+		var splode = explosion.instantiate()
+		splode.position = position
+		print(position)
+		add_child(splode)
+		splode.restart()
+		splode.emitting = true
+		splode.z_index = 50
 		main.increment_score()
-		body.queue_free()#uninstantiate tennis ball
+		body.queue_free()#uninstantiate tennis baldl
 		
 	elif body.get_collision_layer_value(3):
 		speed = 200

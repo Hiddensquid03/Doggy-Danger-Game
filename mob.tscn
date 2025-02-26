@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://ch6o0ckg2lgpc"]
+[gd_scene load_steps=7 format=3 uid="uid://ch6o0ckg2lgpc"]
 
 [ext_resource type="Texture2D" uid="uid://dwgogxuxwp85l" path="res://art/Lawnmower.png" id="1_5inbf"]
 [ext_resource type="Script" path="res://mob.gd" id="1_u5mt5"]
+[ext_resource type="Texture2D" uid="uid://bfpins080rbdn" path="res://art/bladeofgrass.png" id="3_3n25g"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_uew04"]
 animations = [{
@@ -16,6 +17,16 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uiioc"]
 size = Vector2(33, 20)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_v6dxm"]
+emission_shape = 1
+emission_sphere_radius = 6.71
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+angle_max = 462.9
+color = Color(0.0588235, 0.803922, 0, 1)
 
 [node name="Mob" type="RigidBody2D"]
 collision_mask = 0
@@ -34,3 +45,8 @@ shape = SubResource("RectangleShape2D_uiioc")
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(7.62939e-06, 3.8147e-06)
 scale = Vector2(1.6, 1.05)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 24
+process_material = SubResource("ParticleProcessMaterial_v6dxm")
+texture = ExtResource("3_3n25g")

@@ -58,7 +58,7 @@ func show_game_over():
 	$StartButton.show()
 	$"Hard button".show()
 	
-	#timeout win con
+	#timeout win con + timer hud 
 var time_left = 30
 func _on_playing_time_timeout():
 	if time_left >= 0:
@@ -67,7 +67,8 @@ func _on_playing_time_timeout():
 	else:
 		show_game_over()
 		show_message("Timed out")
-		
+		await get_tree().create_timer(1.0).timeout
+		get_tree().quit()
 		
 	pass # Replace with function body.
 

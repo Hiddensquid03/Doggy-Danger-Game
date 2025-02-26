@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bi0h861dtquhe"]
+[gd_scene load_steps=5 format=3 uid="uid://bi0h861dtquhe"]
 
 [ext_resource type="Texture2D" uid="uid://37a8eimhbolr" path="res://art/Tennisball.png" id="1_1yfoj"]
 [ext_resource type="Script" path="res://Tennisball.gd" id="1_ln76g"]
+[ext_resource type="PackedScene" uid="uid://tbhpalti6l61" path="res://Explodingparticles.tscn" id="2_iixof"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_26iee"]
 radius = 12.0
@@ -11,6 +12,7 @@ collision_layer = 2
 collision_mask = 2
 gravity_scale = 0.0
 script = ExtResource("1_ln76g")
+explosion = ExtResource("2_iixof")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_1yfoj")

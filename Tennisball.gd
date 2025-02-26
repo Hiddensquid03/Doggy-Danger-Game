@@ -2,7 +2,8 @@ extends RigidBody2D
 # EMPTY NOT REQUIRED
 # EMPTY NOT REQUIRED
 # EMPTY NOT REQUIRED
-#Templating purposes
+
+@export var explosion: PackedScene
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,3 +17,5 @@ func _process(delta):
 
 func _on_body_entered(body):
 	pass
+
+	
