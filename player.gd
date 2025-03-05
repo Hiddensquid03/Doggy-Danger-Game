@@ -84,7 +84,7 @@ func _on_body_entered(body):
 	#Tennis ball
 	elif body.get_collision_layer_value(2):
 		print("Tennis ball collision")
-		#$GPUParticles2D.("explode"):
+		#Particle effects
 		$GPUParticles2D.emitting = true
 		$GPUParticles2D.restart()
 		main.increment_score()
