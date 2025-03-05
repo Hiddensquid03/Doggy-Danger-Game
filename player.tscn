@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bu4rhgm7n2y1p"]
+[gd_scene load_steps=16 format=3 uid="uid://bu4rhgm7n2y1p"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_yfmle"]
 [ext_resource type="PackedScene" uid="uid://tbhpalti6l61" path="res://Explodingparticles.tscn" id="2_by2l8"]
@@ -67,6 +67,25 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4yloi"]
 size = Vector2(29, 19)
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gr7jj"]
+lifetime_randomness = 0.47
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 0.1
+emission_ring_radius = 1.0
+emission_ring_inner_radius = 0.0
+particle_flag_disable_z = true
+spread = 168.75
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 26.79
+initial_velocity_max = 26.79
+angular_velocity_min = 77.14
+angular_velocity_max = 77.14
+orbit_velocity_min = 0.1
+orbit_velocity_max = 0.9
+angle_min = 90.0
+angle_max = 90.0
+
 [node name="player" type="Area2D"]
 position = Vector2(54, 32)
 collision_mask = 7
@@ -81,5 +100,14 @@ animation = &"Walk_Right"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-8.5, -22.5)
 shape = SubResource("RectangleShape2D_4yloi")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(-8, -22)
+emitting = false
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_gr7jj")
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -83,13 +83,10 @@ func _on_body_entered(body):
 			$CollisionShape2D.set_deferred("disabled", true)
 	#Tennis ball
 	elif body.get_collision_layer_value(2):
-		var splode = explosion.instantiate()
-		splode.position = position
-		print(position)
-		add_child(splode)
-		splode.restart()
-		splode.emitting = true
-		splode.z_index = 50
+		print("Tennis ball collision")
+		#$GPUParticles2D.("explode"):
+		$GPUParticles2D.emitting = true
+		$GPUParticles2D.restart()
 		main.increment_score()
 		body.queue_free()#uninstantiate tennis baldl
 		
